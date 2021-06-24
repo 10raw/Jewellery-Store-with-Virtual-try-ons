@@ -1,0 +1,67 @@
+
+<div id="parent">
+    <img id="backimg" src="{{iback}}" alt="">
+    <img id="frontimg" src="{{ifront}}" alt="">
+    
+        </div>
+   
+    
+    <button id="mover" >></button>
+    <button id="movel" ><</button>
+    <button id="moveup">^</button>
+    <button id="movedown">v</button>
+    <button id="widthin">+w</button>
+    <button id="widthout">-w</button>
+    <button id="heightin">+h</button>
+    <button id="heightout">-h</button>
+    <script>
+        window.addEventListener('load',()=>{
+    document.querySelector("#backimg").style.position="relative";
+    document.querySelector("#frontimg").style.left="0px";
+    document.querySelector("#frontimg").style.top="0px";
+    
+});
+document.getElementById("mover").addEventListener("click",mover);
+document.getElementById("movel").addEventListener("click",movel);
+document.getElementById("moveup").addEventListener("click",moveup);
+document.getElementById("movedown").addEventListener("click",movedown);
+document.getElementById("widthin").addEventListener("click",widthin);
+document.getElementById("widthout").addEventListener("click",widthout);
+document.getElementById("heightin").addEventListener("click",heightin);
+document.getElementById("heightout").addEventListener("click",heightout);
+
+function mover(){
+
+document.getElementById("frontimg").style.left=parseInt(document.getElementById("frontimg").style.left)+5+'px';
+
+}
+function movel(){
+
+document.getElementById("frontimg").style.left=parseInt(document.getElementById("frontimg").style.left)-5+'px';
+
+}
+function moveup(){
+
+document.getElementById("frontimg").style.top=parseInt(document.getElementById("frontimg").style.top)-5+'px';
+
+}
+function movedown(){
+
+document.getElementById("frontimg").style.top=parseInt(document.getElementById("frontimg").style.top)+5+'px';
+
+}
+function widthin(){
+document.getElementById("frontimg").style.width=document.getElementById("frontimg").clientWidth+10+'px';
+}
+function widthout(){
+document.getElementById("frontimg").style.width=document.getElementById("frontimg").clientWidth-10+'px';
+}
+function heightin(){
+document.getElementById("frontimg").style.height=document.getElementById("frontimg").clientHeight+10+'px';
+}
+function heightout(){
+document.getElementById("frontimg").style.height=document.getElementById("frontimg").clientHeight-10+'px';
+}
+
+
+    </script>

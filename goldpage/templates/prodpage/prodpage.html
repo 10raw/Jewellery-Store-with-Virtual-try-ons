@@ -1,0 +1,30 @@
+{% extends 'temp/navbar.html' %}
+{% block linkthings %}
+{% load static %}
+<link rel="stylesheet" href="overlay.css">
+<link rel="stylesheet" href="{% static 'css/sepprodstyle.css' %}">
+{% endblock linkthings %}
+{% block main %}
+{% for pro1 in product %}
+<img src="{{pro1.proi.url}}" width="570px" height="500px" alt="">
+<p>{{pro1.pronm}}</p>
+<p>{{pro1.propri}}</p>
+<p>{{pro1.proamt}}</p>
+<p>{{pro1.prodesc}}</p>
+{% endfor %}
+<h1>Virtual Try-on this item: </h1>
+<div class="vto">
+    <form method="POST" action="" enctype="multipart/form-data">
+        <!-- {{csrf_token}} this will actually print it-->
+        {% csrf_token %}
+        {{form.as_p}}
+    <input type="submit" value="Upload">
+</form>
+
+<img src="{{ lehimg }}" alt="">
+
+</div>
+
+</body>
+</html>
+{% endblock %}

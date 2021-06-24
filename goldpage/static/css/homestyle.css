@@ -1,0 +1,194 @@
+.navbar{
+    background-color: rgb(175, 223, 223);
+    float: right;
+  align-items: center;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  width: 100%;
+    display: flex;
+    
+  }
+  
+  .floatr{
+      
+      float: right;
+      /* margin-right: 1rem; */
+      margin-left: 39rem;
+      
+      
+      
+      /* vertical-align: 0em; */
+      padding-left: 1.5rem;
+  }
+  .floatr>a:link{
+      text-decoration: none;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: rgb(255, 255, 255);
+  }
+  .navbar>a:link{
+      font-size: 1.5rem;
+      color:rgb(255, 255, 255);
+      text-decoration: none;
+      font-family: 'Playfair Display', serif;
+      margin-left: 1rem;
+  }
+  .navbar>img{
+      margin-left: 1rem;
+  }
+  .floatr>a:link{
+      padding-left: 2rem;
+  }
+  
+  body{
+      margin-top: 0em;
+      margin-bottom: 0em;
+      margin-left: 0em;
+      margin-right: 0em;
+      background-image: linear-gradient( rgb(255, 255, 255), rgb(255, 255, 255));
+      background-repeat: no-repeat;
+      height: 60rem;
+      font-family: 'Playfair Display', serif; 
+  }
+  *{
+      box-sizing: border-box;
+  }
+  .marqueeoffer{
+      background-color: rgb(214, 245, 242);
+      color:rgb(137, 172, 169);
+      font-size: 2rem;
+  }
+  .infocategories{
+      font-size: 1.8rem;
+      text-align: center;
+      color: rgb(255, 255, 255);
+      padding-top: 0.6rem;
+      margin-top: 0.2rem;
+      margin-bottom: 0.2rem;
+      padding-bottom: 0.6rem;
+      background-image: linear-gradient(rgb(170, 214, 212),rgb(186, 235, 232));
+  }
+  .category-mat{
+      display: flex;
+      padding-left: 0.5rem;
+      padding-right: 1rem;
+      background-image: linear-gradient(rgb(255, 255, 255),rgb(255, 255, 255));
+      padding-top: 0.7rem;
+     
+  }
+  .category-mat>img{
+      
+      border-radius: 3rem;
+  }
+  .category-type{
+      display: flex;
+      padding-left: 0.5rem;
+      background-image: linear-gradient(rgb(255, 255, 255),rgb(255, 255, 255));
+  margin-right: 0em;
+  }
+  .category-mat>a{
+      
+      color: rgb(7, 7, 7);
+      text-decoration: none;
+    font-size: 1.6rem;
+      text-align: center;
+      margin-right: 0rem;
+    border-right: 0rem;
+    background-color: rgb(179, 223, 223);
+    border:0.8rem solid;
+    border-color:rgb(255, 255, 255);
+  }
+  .category-type>a{
+      
+      color: rgb(7, 7, 7);
+      text-decoration: none;
+    font-size: 1.6rem;
+      text-align: center;
+      border:0.8rem solid;
+      border-color:rgb(255, 255, 255);
+      padding-left: 0rem;
+      padding-right: 0rem;
+    margin-right: 0rem;
+    border-right: 0rem;
+    background-color: rgb(179, 223, 223);
+  }
+  
+  .category-mat>p{
+      margin-block-start: 0rem;
+      margin-block-end:  0rem;
+  }
+  /* .category-type>a{
+      padding-left: 0.5rem;
+      padding-right: 1rem;
+  } */
+  .slbutton{
+      height: 2rem;
+      width: 2rem;
+      margin: auto;
+      border-radius: 0.5rem;
+      background-color: rgb(128, 173, 177);
+      transition: background-color 0.5s ease-in;
+      cursor: pointer;
+  }
+  .slbuttons{
+      justify-content: center;
+    margin-left: 43rem;
+  }
+  .slideimgs{
+      display: flex;
+  }
+  .slide{
+      width: 100%;
+      height: 40rem;
+  
+  }
+  .active,.slbutton:hover{
+      background-color: rgb(200, 241, 241);
+  }
+  
+  
+    .slideimgs{
+        position: relative;
+    }
+    .reviewtransp{
+        display: table;
+        border-width: 1rem;
+        margin-right: 1rem;
+        width: 100%;
+        
+        background-size: 100;
+        
+    }
+    .reviews{
+      background-image: url(./images/bac14.jpg);
+      border: 1.5rem solid;
+      border-image: url(./images/bac14.jpg);
+      
+    }
+    .reviewtransp{
+    
+        background-color: rgba(80, 174, 180, 0.61);
+        
+       
+        
+        
+        
+    }
+    .column{
+        display: table-cell;
+      
+      
+      
+        /* border-image: url(./images/bac14.jpg); */
+  
+  
+  
+    }
+    .column>pre{
+      font-size: 1.2rem;
+      font-family: 'Playfair Display', serif; 
+      width: 8rem;
+      color: rgb(255, 255, 236);
+      
+    }
+    
