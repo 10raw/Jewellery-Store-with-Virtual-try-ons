@@ -17,9 +17,10 @@ def showprodpage(request,proname1):
     product=Products.objects.filter(pronm=proname1)
     print(product)
     message=""
-    c=0
+    
     context={'product':product}
     if request.method=='POST':
+        c=0
         form=Userform(request.POST,request.FILES)
         if form.is_valid():
             email=form.cleaned_data['usrmail']
@@ -30,20 +31,26 @@ def showprodpage(request,proname1):
             userdets=User.objects.all()
             print('userdets',userdets)
             for i in userdets:
-                if i.usrmail==email:
-                    if i.usrpass==passw:
+                if i.usrmail == email:
+                    print(i.usrmail,i.usrpass)
+                    c=1
+                    if i.usrpass ==passw:
                         print("already registered")
                         i.usrphoto.delete()
                         i.usrphoto=lehimg
                         i.usrprofile=profile
                         
                         i.save()
-                        context['lehimg']="/media/usrphotos/"+str(i.usrphoto)
+                        context['lehimg']=i.usrphoto.url
+                        context['profile']=i.usrprofile.url
+                        # context['lehimg']="/media/"+str(i.usrphoto)
                         
-                        c=1
+                        
                         print(i.usrphoto)
                     else:
                         message="Incorrrect Email or Password"
+                        break
+                
             if c!=1:
                 print("new registration")
                 newobject=User(
@@ -54,8 +61,8 @@ def showprodpage(request,proname1):
                 newobject.save()
                 context['mail']=email
                 context['passw']=passw
-                context['lehimg']="/media/usrphotos/"+str(lehimg)
-                context['profile']=profile
+                context['lehimg']=newobject.usrphoto.url
+                context['profile']=newobject.usrprofile.url
                 print('userdets',userdets)
                 print(newobject)
     else:
