@@ -1,0 +1,50 @@
+.prodetails{
+    padding-top: 3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+
+
+
+.navbar{
+    background-color: rgb(161, 212, 212);
+    float: right;
+  align-items: center;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  width: 100%;
+    display: flex;
+    
+  }
+  
+  .floatr{
+      
+      float: right;
+      /* margin-right: 1rem; */
+      margin-left: 39rem;
+      
+      
+      
+      /* vertical-align: 0em; */
+      padding-left: 1.5rem;
+  }
+  .floatr>a:link{
+      text-decoration: none;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: rgb(255, 255, 255);
+  }
+  .navbar>a:link{
+      font-size: 1.5rem;
+      color:rgb(255, 255, 255);
+      text-decoration: none;
+      font-family: 'Playfair Display', serif;
+      margin-left: 1rem;
+  }
+  .navbar>img{
+      margin-left: 1rem;
+  }
+  .floatr>a:link{
+      padding-left: 2rem;
+  }

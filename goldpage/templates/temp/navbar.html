@@ -21,10 +21,16 @@
         <img src="./images/evara.jpg" height="60px" width="110px" alt="">
         <a href="home.html">Home<img src="" alt=""></a>  
         <div class="floatr">                                                                                                            
-<a href="mycart.html">My Cart    <img src="./images/cartjes.png" height="30px" width="30px" alt=""></a>
-<a href="wishlist.html">Wishlist    <img src="./images/wishlist.png" height="30px" width="30px" alt=""></a>
-<a href="login.html">Login    <img src="./images/user (2).png" height="30px" width="30px" alt=""></a>
-<a href="contactus.html">Contact Us   <img src="./images/mail.png" height="30px" width="30px" alt=""></a>
+<a href="/home/cart/">My Cart    <img src="{% static 'images/cartjes.png' %}" height="30px" width="30px" alt=""></a>
+<a href="wishlist.html">Wishlist    <img src="{% static 'images/wishlist.png' %}" height="30px" width="30px" alt=""></a>
+{% if usrnnmm %}
+
+<a href="/home/logout">Log Out  <img src="{% static 'images/user (2).png' %}" height="30px" width="30px" alt=""></a>
+{% else %}
+<a href="/home/signin">Login    <img src="{% static 'images/user (2).png' %}" height="30px" width="30px" alt=""></a>
+{% endif %}
+<a href="contactus.html">Contact Us   <img src="{% static 'images/mail.png' %}" height="30px" width="30px" alt=""></a>
+
     </div>
 </div> 
 {% block main %}

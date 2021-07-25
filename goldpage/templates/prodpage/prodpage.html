@@ -1,6 +1,7 @@
 {% extends 'temp/navbar.html' %}
 {% block linkthings %}
 {% load static %}
+{% load cart %}
 <link rel="stylesheet" href="overlay.css">
 <link rel="stylesheet" href="{% static 'css/sepprodstyle.css' %}">
 {% endblock linkthings %}
@@ -11,21 +12,59 @@
 <p>{{pro1.propri}}</p>
 <p>{{pro1.proamt}}</p>
 <p>{{pro1.prodesc}}</p>
+<form action="" method="post">
+    {% csrf_token %}
+    <!-- lol this csrf is want to set for first time requires internet -->
+    <input name="product" type="text" hidden value="{{pro1.proid}}">
+    <p>Product ID:</p>{{pro1.proid}}
+    <button class="addtocart" type="submit">Add To Cart</button>
+    
+    
+    
+</form>
+<form action="/home/wishlist/" method="post">
+    {% csrf_token %}
+    <input type="text" name="wishitem" hidden value="{{pro1.proid}}">
+    <input type="submit" value="Add To Wishlist">
+</form>
+
+{% if pro1|cart_has_it:request.session.cart %}
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="text" hidden name="addincart" value="{{pro1.proid}}">
+    <input type="submit" name="" value="+" id=""> 
+</form>
+<p>{{pro1 | cart_has_it:request.session.cart}} in Cart </p>
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="text" hidden name="subfromcart" value="{{pro1.proid}}">
+    <input type="submit" name="" value="-" id="">
+</form>
+{% endif %}
+
 {% endfor %}
 <h1>Virtual Try-on this item: </h1>
+<p> Hello {{usrnnmm}} </p>
 
+{% if usrnnmm %}
     <form method="POST" action="" enctype="multipart/form-data">
         <!-- {{csrf_token}} this will actually print it-->
         {% csrf_token %}
-        {{form.as_p}}
+    {{form.usrph}}
     <input type="submit" value="Upload">
 </form>
+<a href="/home/signinup">Sign in/up here</a>
 <div class="vto"></div>
 {% for pro1 in product %}
-{% include 'temp/overlay.html' with iback=lehimg  ifront=pro1.proi.url %}
+{% include 'temp/overlay.html' with iback=usrfin.url  ifront=pro1.proi.url %}
 {% endfor %}
-</div>
 
+
+
+</div>
+{% else %}
+<p>U should first login</p>
+{% endif %}
 </body>
 </html>
 {% endblock %}

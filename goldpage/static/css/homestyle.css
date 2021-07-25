@@ -160,18 +160,14 @@
         
     }
     .reviews{
-      background-image: url(./images/bac14.jpg);
+      background-image: url(/static/images/bac14.jpg);
       border: 1.5rem solid;
-      border-image: url(./images/bac14.jpg);
+      border-image: url(/static/images/bac14.jpg);
       
     }
     .reviewtransp{
     
         background-color: rgba(80, 174, 180, 0.61);
-        
-       
-        
-        
         
     }
     .column{
