@@ -1,0 +1,182 @@
+{% extends 'temp/navbar.html' %}
+{% block linkthings %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/prodstyle.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+{% endblock %}
+{% block main %}
+<br><br><br><br><br>
+<div class="filtertool">
+<ul>
+    <li>
+        <ul>
+            <li id="filprice">Price (Rs)</li>
+
+            <div class="filpricon">
+            <li><a href="/home/gold/{{filid1}}0/1/{{filw}}0/{{filo}}0/" >10K to 25K</a></li>
+            <li><a href="/home/gold/{{filid1}}0/2/{{filw}}0/{{filo}}0/">25K to 40K</a></li>
+            <li><a href="/home/gold/{{filid1}}0/3/{{filw}}0/{{filo}}0/">40K to 60K</a></li>
+            <li><a href="/home/gold/{{filid1}}0/4/{{filw}}0/{{filo}}0/">60K to 80K</a></li>
+      
+            </div>
+        </ul>
+   
+        <ul>
+            <li id="filorna">Ornament</li>
+            <div class="filorncon">
+                
+            <li><a href="/home/gold/{{filid1}}0/{{filp}}0/{{filw}}0/1/">Gold</a></li>
+            <li><a href="/home/gold/{{filid1}}0/{{filp}}0/{{filw}}0/2/">Platinum</a></li>
+            <li><a href="/home/gold/{{filid1}}0/{{filp}}0/{{filw}}0/3/">Diamond</a></li>
+            <li><a href="/home/gold/{{filid1}}0/{{filp}}0/{{filw}}0/4/">American Diamonds</a></li>
+            <li><a href="/home/gold/{{filid1}}0/{{filp}}0/{{filw}}0/5/">Silver</a></li>
+            
+            </div>
+        </ul>
+    
+        <ul>
+            
+            <li id="filwei">Weight</li>
+            <div class="filweicon">
+                
+            <li><a href="/home/gold/{{filid1}}0/{{filp}}0/1/{{filo}}0/">1 to 5 g</a></li>
+            <li><a href="/home/gold/{{filid1}}0/{{filp}}0/2/{{filo}}0/">5 to 10 g</a></li>
+            <li><a href="/home/gold/{{filid1}}0/{{filp}}0/3/{{filo}}0/">10 to 15 g</a></li>
+         
+            </div>
+        </ul>
+    </li>
+</ul>
+</div>
+<style>
+    .filtertool>ul>li{
+    display: flex;
+}
+.filtertool ul li ul li {
+    padding-left: 2.3rem;
+    padding-right:2.3rem;
+    list-style: none;
+    border: 0.1rem solid;
+    border-radius: 1rem;
+    background-color: rgb(140, 204, 203);
+    
+}
+.filtertool ul li ul li {
+    margin-bottom: 0.3rem;
+}
+.filtertool ul li ul :first-of-type li{
+    background-color: rgb(201, 232, 233);
+}
+.filtertool ul li ul li:hover,
+.filtertool ul li ul li:active
+{
+    background-color:  rgb(140, 204, 203);
+    cursor: pointer;
+}
+.filpricon,.filorncon,.filweicon{
+    opacity: 0;
+    list-style: none;
+    position: absolute;
+    justify-content: center;
+    transition: visibility 0s, opacity 1s linear;
+    
+}
+.filorncon{
+    width: 10.5rem;
+}
+.filpricon{
+    
+    width: 12rem;
+}
+.filweicon{
+    width: 11rem;
+   
+}
+.filtertool a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+.filtertool>ul li{
+    font-size: 1.5rem;
+   
+}
+#filprice,#filorna,#filwei{
+    width: 7rem;
+}
+
+
+
+</style>
+<script>
+    document.getElementById("filprice").addEventListener("click",()=>{
+        if(document.querySelector(".filpricon").style.opacity==0){
+            document.querySelector(".filpricon").style.opacity=1;
+    
+            
+        }
+        else if(document.querySelector(".filpricon").style.opacity==1){
+            document.querySelector(".filpricon").style.opacity=0;
+        }
+    
+    });
+    document.getElementById("filorna").addEventListener("click",()=>{
+        if(document.querySelector(".filorncon").style.opacity==0){
+            document.querySelector(".filorncon").style.opacity=1;
+        }
+        else if(document.querySelector(".filorncon").style.opacity==1){
+            document.querySelector(".filorncon").style.opacity=0;
+        }
+    
+    });
+    document.getElementById("filwei").addEventListener("click",()=>{
+        if(document.querySelector(".filweicon").style.opacity==0){
+            document.querySelector(".filweicon").style.opacity=1;
+        }
+        else if(document.querySelector(".filweicon").style.opacity==1){
+            document.querySelector(".filweicon").style.opacity=0;
+        }
+    
+    });
+
+</script>
+
+
+
+    <div class="products">
+    {% for pro in prod %}
+    <div class="prod">
+    <img src="{{ pro.proi.url }}" height="200px" width="200px" alt=""><br>
+    <span>{{pro.pronm}}</span>
+    <p>Rs {{pro.propri}} </p>
+    <p>{{pro.proamt}} g</p>
+    <button class="viewitem"><a href="/home/prod/{{pro.pronm}}/">View Item</a></button>
+    </div>
+    {% endfor %}
+</div>
+
+</body>
+<style>
+    .products{
+        background-color: white;
+        
+    }
+    .viewitem{
+        font-size: 1.2rem;
+        font-family: 'Times New Roman', Times, serif;
+    }
+.prod{
+    padding-left: 0.7rem;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+    padding-right: 0.7rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    background-image: linear-gradient(rgb(102, 158, 160),rgb(219, 246, 248));
+}
+.prod p,span{
+    font-size: 1.2rem;
+    font-family: 'Playfair Display', serif;
+}
+</style>
+</html>
+{% endblock %}

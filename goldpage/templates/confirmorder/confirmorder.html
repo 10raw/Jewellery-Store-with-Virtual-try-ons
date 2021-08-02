@@ -1,0 +1,16 @@
+{% extends 'temp/navbar.html' %} 
+{% load static %}
+
+{% block linkthings %}
+<link rel="stylesheet" href="{% static 'css/cart.css' %}">
+{% endblock %}
+
+{% block main %}
+<p>Payment Gateway</p>
+<form action="" method="post">
+    {% csrf_token %}
+    {{form}}
+</form>
+
+<button>Proceed through Paytm</button>
+{% endblock %}

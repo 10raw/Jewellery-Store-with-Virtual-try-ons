@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title> Jewellers</title>
+    {% block linkthings %}
+{% endblock %}
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+  
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+<meta name="description" content="absvvsdskjdhhhsjd">
+</head>
+<body>
+    <div class="navbar">
+
+        <img src="./images/evara.jpg" height="60px" width="110px" alt="">
+        <a href="home.html">Home<img src="" alt=""></a>  
+        <div class="floatr">                                                                                                            
+<a href="/home/cart/">My Cart    <img src="{% static 'images/cartjes.png' %}" height="30px" width="30px" alt=""></a>
+<a href="wishlist.html">Wishlist    <img src="{% static 'images/wishlist.png' %}" height="30px" width="30px" alt=""></a>
+{% if usrnnmm %}
+
+<a href="/home/logout">Log Out  <img src="{% static 'images/user (2).png' %}" height="30px" width="30px" alt=""></a>
+{% else %}
+<a href="/home/signin">Login    <img src="{% static 'images/user (2).png' %}" height="30px" width="30px" alt=""></a>
+{% endif %}
+<a href="contactus.html">Contact Us   <img src="{% static 'images/mail.png' %}" height="30px" width="30px" alt=""></a>
+
+    </div>
+</div> 
+{% block main %}
+{% endblock %}
+
+</body>
+</html>

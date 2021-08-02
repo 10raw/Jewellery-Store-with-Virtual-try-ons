@@ -1,0 +1,34 @@
+{% extends 'temp/navbar.html' %} 
+<!-- {% include 'temp/navbar.html' %} -->
+{% load static %}
+
+{% block linkthings %}
+<link rel="stylesheet" href="{% static 'css/cart.css' %}">
+{% endblock %}
+
+{% block main %}
+
+<div  class="prodetails" style="white-space: pre;">
+{% for i in mycart %}
+
+{% for j in i %}      {{j}}      {% endfor %}
+
+{% endfor %}
+{{total}}
+<p>plus 3% service tax = {{tax}}</p>
+<p>Grand Total:</p>
+{{tot}}
+
+</div>
+<form action="/home/confirmorder/" method="post">
+    {% csrf_token %}
+<input type="submit" value="Confirm & Place">
+</form>
+
+<p>Your previous Placed Orders:</p>
+{% for pr in prev %}
+<p style="white-space: pre;">
+{% for p in pr %}       {{p}}       {% endfor %}
+</p>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'temp/navbar.html' %} 
+<!-- {% include 'temp/navbar.html' %} -->
+{% load static %}
+
+{% block linkthings %}
+<link rel="stylesheet" href="{% static 'css/wishlist.css' %}">
+{% endblock %}
+
+{% block main %}
+{{mywishlist}}
+{{msg}}
+{% endblock %}
