@@ -1,11 +1,5 @@
-.products{
-    display: flex;
-    background-color: bisque;
-    margin-right: 1rem;
-}
 .navbar{
-    background-image: linear-gradient(to right,rgb(182, 168, 88),rgb(175, 155, 65));
-    /* background-image: linear-gradient(to right,rgb(0, 217, 255),rgb(255, 0, 255)); */
+    background-color:rgb(155, 152, 83);
     float: right;
   align-items: center;
   padding-top: 0.5rem;
@@ -14,7 +8,6 @@
     display: flex;
     
   }
-  
   
   .floatr{
       
@@ -46,3 +39,36 @@
   .floatr>a:link{
       padding-left: 2rem;
   }
+.msg1{
+    font-size: 2rem;
+    font-family: 'Playfair Display', serif;
+    margin-left: 35rem;
+    margin-top: 0rem;
+}
+body{
+    margin-top: 0rem;
+    background-color: rgb(231, 231, 206);
+}
+.payment{
+    
+    font-size: 1.7rem;
+    margin-top: 0.7rem;
+    font-family: 'Playfair Display', serif;
+    background-color: rgb(189, 183, 98);
+    color: aliceblue;
+}
+.form{
+    margin-left: 39rem;
+    margin-top: 2rem;
+    font-family: 'Playfair Display', serif; 
+    font-size: 1.5rem;
+  
+    
+}
+.but{
+    font-family: 'Playfair Display', serif;
+    background-color: rgb(189, 183, 98);
+    color: aliceblue;
+    font-size: 1.7rem;
+    margin-left: 5rem;
+}

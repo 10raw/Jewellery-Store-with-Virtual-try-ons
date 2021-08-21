@@ -10,13 +10,15 @@ class Products(models.Model):
     propri=models.IntegerField()
     proamt=models.IntegerField()
     proi=models.ImageField(upload_to='uploads/')
+    proierased=models.ImageField(upload_to='uploads/', default='D:\OpenSource\JewelleryStore\WhatsApp Image 2021-08-08 at 12.50.34 AM.jpeg')
     profil=models.IntegerField(default=1)
 
 # class Order(models.Model)
 class Details(models.Model):
     usrname=CharField(max_length=60)
+    usrfullname=CharField(max_length=200)
     usrph=models.ImageField(upload_to='usrphotos/')
-    usraddress=models.CharField(max_length=200)
+    usraddress=models.CharField(max_length=500)
     usrphoneno=models.IntegerField(blank=True,null=True)
     usrprofile=models.ImageField(upload_to='usrprofile/')
     # orders=models.ForeignKey()

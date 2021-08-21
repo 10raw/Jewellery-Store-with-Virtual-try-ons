@@ -7,58 +7,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{% static 'css/signin.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+<meta name="description" content="absvvsdskjdhhhsjd">
 </head>
 
 <body>
-    <div class="hero">
-        <div class="form-box">
-            <div class="button-box">
-                <div id="btn"></div>
-                <button type="button" class="toggel-btn" onclick="signin()">SIGN IN</button>
-                <button type="button" class="toggel-btn" onclick="signup()">SIGN UP</button>
-
-            </div>
-            <div class="socisl-ico">
-                <img src="facebook.png" alt="">
-                <img src="twitter.png" alt="">
-                <img src="instagram.png" alt="">
-
-            </div>
-            <form id="signin"class="input" method="post">
+    
+    
+    <p class="text1">Sign in here</p>
+        <div class="signinpage">
+            <form id="signinform" class="input" method="post">
             {% csrf_token %}
-            {{formsi}}
+            {{formsi.as_p}}
         
-            <button type="submit" class="submit-btn">SIGN IN</button>
+            <button type="submit" id="signin" class="submit-btn">Sign In</button>
             </form>
-            <form id="signup" class="input" method="post">
-                {% csrf_token %}
-                {{formsu.as_p}}
-        
-            <button type="submit" class="submit-btn">SIGN UP</button>
-            </form>
-
         </div>
+    <a style="font-size: 2rem; margin-left: 42rem;" href="/home/signup/">Sign up instead</a>
+      
     
 
-    </div>
-<script>
-var x = document.getElementById("signin");
-var y = document.getElementById("signup");
-var z = document.getElementById("btn");
-function signup(){
-    x.style.left = "-400px";
-    y.style.left = "50px";
-    z.style.left = "110px";
-   
-}
-function signin(){
-    x.style.left = "50px";
-    y.style.left = "450px";
-    z.style.left = "0";
-}
 
 
-</script>
+
 </body>
 
 </html>

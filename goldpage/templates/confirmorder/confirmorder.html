@@ -2,15 +2,21 @@
 {% load static %}
 
 {% block linkthings %}
-<link rel="stylesheet" href="{% static 'css/cart.css' %}">
+<link rel="stylesheet" href="{% static 'css/payment.css' %}">
 {% endblock %}
 
 {% block main %}
-<p>Payment Gateway</p>
-<form action="" method="post">
-    {% csrf_token %}
-    {{form}}
-</form>
+<p class="payment">Payment Gateway</p>
+{{msg}}
 
-<button>Proceed through Paytm</button>
+<p class="payment2">Guidelines for Payment</p>
+<p class="details">Fill in the data fields “Name”, “e-mail ID”, “Type of Fees”, etc and the fee details. <br>
+    Click “Submit”. You shall be directed to PayUMoney online portal. <br> Please register for the first time by filling in the data fields (Name, e-mail ID and Mobile No) <br> again to register on PayUMoney portal or if you already registered previously, log in using your login information.<br>
+    Click on “Make Payment”. You shall be directed to the PayUMoney online payment gateway, wherein you have to <br> create a PayU account by entering your e-mail address, mobile number and password.<br> If you have already registered then enter your e-mail ID and password. 
+    Click “I agree to PayUMoney Terms & Conditions” and click on “Continue”.<br>
+    Select mode of payment (Credit Card, Debit Card, NEFT/RTGS, etc). <br>
+    Please follow instructions as applicable to your choice of payment.<br>
+    Each online transaction has processing charges</p>
+<a href="/home/payment"><button class="but">Proceed through Paytm</button></a>
+
 {% endblock %}

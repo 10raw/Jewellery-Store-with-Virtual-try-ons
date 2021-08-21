@@ -1,5 +1,6 @@
 .navbar{
-    background-color: rgb(175, 223, 223);
+    background-image: linear-gradient(to right,rgb(182, 168, 88),rgb(175, 155, 65));
+    /* background-image: linear-gradient(to right,rgb(0, 217, 255),rgb(255, 0, 255)); */
     float: right;
   align-items: center;
   padding-top: 0.5rem;
@@ -45,8 +46,10 @@
       margin-bottom: 0em;
       margin-left: 0em;
       margin-right: 0em;
-      background-image: linear-gradient( rgb(255, 255, 255), rgb(255, 255, 255));
-      background-repeat: no-repeat;
+      background-image: url(/static/images/img4.jpg);
+      
+      /* background-repeat: no-repeat;
+       */background-size: cover;
       height: 60rem;
       font-family: 'Playfair Display', serif; 
   }
@@ -54,25 +57,26 @@
       box-sizing: border-box;
   }
   .marqueeoffer{
-      background-color: rgb(214, 245, 242);
-      color:rgb(137, 172, 169);
+      background-color: rgb(241, 232, 190);
+      color:rgb(136, 116, 25);
       font-size: 2rem;
   }
   .infocategories{
       font-size: 1.8rem;
       text-align: center;
-      color: rgb(255, 255, 255);
+      color: rgb(19, 16, 16);
       padding-top: 0.6rem;
       margin-top: 0.2rem;
       margin-bottom: 0.2rem;
       padding-bottom: 0.6rem;
-      background-image: linear-gradient(rgb(170, 214, 212),rgb(186, 235, 232));
+      /* background-image: linear-gradient(to right,rgb(0, 217, 255),rgb(255, 0, 255)); */
+      background-color: rgb(247, 242, 224);
   }
   .category-mat{
       display: flex;
       padding-left: 0.5rem;
       padding-right: 1rem;
-      background-image: linear-gradient(rgb(255, 255, 255),rgb(255, 255, 255));
+      background-color: rgba(240, 248, 255, 0);
       padding-top: 0.7rem;
      
   }
@@ -83,8 +87,9 @@
   .category-type{
       display: flex;
       padding-left: 0.5rem;
-      background-image: linear-gradient(rgb(255, 255, 255),rgb(255, 255, 255));
+      /* background-image: linear-gradient(to right,rgb(0, 217, 255),rgb(255, 0, 255)); */
   margin-right: 0em;
+  margin-left: 2rem;
   }
   .category-mat>a{
       
@@ -94,13 +99,13 @@
       text-align: center;
       margin-right: 0rem;
     border-right: 0rem;
-    background-color: rgb(179, 223, 223);
+    background-color: rgb(214, 197, 124);
     border:0.8rem solid;
     border-color:rgb(255, 255, 255);
   }
   .category-type>a{
       
-      color: rgb(7, 7, 7);
+      color: rgb(14, 13, 13);
       text-decoration: none;
     font-size: 1.6rem;
       text-align: center;
@@ -110,7 +115,8 @@
       padding-right: 0rem;
     margin-right: 0rem;
     border-right: 0rem;
-    background-color: rgb(179, 223, 223);
+    background-color: rgb(214, 197, 124);
+    /* background-color: rgb(36, 186, 197); */
   }
   
   .category-mat>p{
@@ -126,7 +132,7 @@
       width: 2rem;
       margin: auto;
       border-radius: 0.5rem;
-      background-color: rgb(128, 173, 177);
+      background-color: rgb(238, 232, 199);
       transition: background-color 0.5s ease-in;
       cursor: pointer;
   }
@@ -143,7 +149,7 @@
   
   }
   .active,.slbutton:hover{
-      background-color: rgb(200, 241, 241);
+      background-color: rgb(180, 160, 70);
   }
   
   
@@ -160,14 +166,15 @@
         
     }
     .reviews{
-      background-image: url(/static/images/bac14.jpg);
+      background-image: url(/static/images/img4.jpg);
       border: 1.5rem solid;
       border-image: url(/static/images/bac14.jpg);
+      background-size: cover;
       
     }
     .reviewtransp{
     
-        background-color: rgba(80, 174, 180, 0.61);
+        background-color: rgba(184, 166, 88, 0.658);
         
     }
     .column{
@@ -187,4 +194,6 @@
       color: rgb(255, 255, 236);
       
     }
-    
+    .categories{
+        background-image: url(/static/images/img4.jpg);
+    }

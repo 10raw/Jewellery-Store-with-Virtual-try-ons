@@ -3,13 +3,14 @@ from django import forms
 
 from django.http import request, response
 from django.shortcuts import render,redirect,HttpResponseRedirect
-from .forms import detailsform
+from .forms import detailsform,paymentdetails
 # Create your views here.
 from .models import Details, Products,Order,OrderedItems
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
 from django.views import View
+from .recaptchavalidtn import FormWithCaptcha
 f=0
 authusrname=""
 
@@ -199,22 +200,28 @@ def filtercategory(request,filp,filw,filo,filvalue1):
 
 
 def signup(request):
+    print("signup function is called")
     if request.method=='POST':
         formsu=UserCreationForm(request.POST)
-        formsi=AuthenticationForm()
+        # formsi=AuthenticationForm()
         if formsu.is_valid():
             formsu.save()
-            return redirect('signin')
+            print("FORM IS VALID",formsu.cleaned_data['username'])
+            # return redirect('signin')
+        else:
+            print("BUDDY FORM IS INVALID")
     else:
+        print("form is not POSTED ")
         formsu=UserCreationForm()
-        formsi=AuthenticationForm()
-    return render(request,'signinup/signinup.html',{'formsu':formsu,'formsi':formsi})
+        
+        # formsi=AuthenticationForm()
+    return render(request,'signinup/signup.html',{'formsu':formsu})
 
 def signin(request):
-    
+    print("signin function is called")
     if request.method=='POST':
         formsi=AuthenticationForm(data=request.POST)
-        formsu=UserCreationForm()
+        # formsu=UserCreationForm()
         if formsi.is_valid():
             global authusrname
             authusrname=formsi.cleaned_data.get('username')
@@ -225,8 +232,8 @@ def signin(request):
             return redirect('home')
     else:
         formsi=AuthenticationForm()
-        formsu=UserCreationForm()
-    return render(request,'signinup/signinup.html',{'formsi':formsi,'formsu':formsu})
+        # formsu=UserCreationForm()
+    return render(request,'signinup/signinup.html',{'formsi':formsi})
 
 def logout(request):
     if 'username' in request.session:
@@ -247,66 +254,70 @@ def cart(request):
         else:
             global authusrname
             authusrname=request.session['username']
+            print("is session:::",request.session['username'])
         loginmessage=" "  
         context['msglogin']=loginmessage
     else:
         loginmessage="You must login"
         context['msglogin']=loginmessage
+        print("Even the session username is not in sessions")
     # del mycart['total']
-    total1=0
-    print("mycart",mycart)
-    print("authusername",authusrname)
-    n=User.objects.get(username=authusrname).id
-    print("n:::",n)
-    if Order.objects.filter(user_id=n).exists():
-        print("The order exists")
-        previous=[]
-        previous_orders=Order.objects.filter(user_id=n)
-        coun=Order.objects.filter(user_id=n).count()
-        print(coun)
-        if coun >1:
-            for k in previous_orders:
-                print("prrevious::",k.date_time)
-                t=str(k.date_time)
-                p=str(k.grand_total)
-                s=str(k.delivery_status)
-                print("tps::::",t,p,s)
-                print(previous)
-                previous.append([t,p,s])
-                
-        else:
-            t=str(previous_orders.date_time)
-            p=str(previous_orders.grand_total)
-            s=str(previous_orders.delivery_status)
-            print("tps::::",t,p,s)
-            print(previous)
-            previous.append([t,p,s])
-        context['prev']=previous
-    print("Final previous list",previous)
+    if 'username' in request.session:
+        total1=0
+        print("mycart",mycart)
+        print("authusername",authusrname)
+        n=User.objects.get(username=authusrname).id
+        print("n:::",n)
+        if Order.objects.filter(user_id=n).exists():
+            print("The order exists")
+            previous=[]
+            previous_orders=Order.objects.filter(user_id=n)
+            coun=Order.objects.filter(user_id=n).count()
+            print(coun)
+            # if coun >=1:
+            if coun >=1:
+                for k in previous_orders:
+                    print("prrevious::",k.date_time)
+                    t=str(k.date_time)
+                    p=str(k.grand_total)
+                    s=str(k.delivery_status)
+                    print("tps::::",t,p,s)
+                    print(previous)
+                    previous.append([t,p,s])
+                    
+            # else:
+            #     t=str(previous_orders.date_time)
+            #     p=str(previous_orders.grand_total)
+            #     s=str(previous_orders.delivery_status)
+            #     print("tps::::",t,p,s)
+            #     print(previous)
+            #     previous.append([t,p,s])
+            context['prev']=previous
+        # print("Final previous list",previous)
 
-    print(context)
-    if mycart:
-        
-        for i in mycart:
-            if i !='total':
-                cart=Products.objects.get(proid=int(i))
-                cartlist.append([cart.proid,cart.pronm,cart.propri,mycart[i],(cart.propri)*mycart[i]])
-                total1=total1+(cart.propri)*mycart[i]
-                
-                
-        tax=total1*3/100
-        tot=tax+total1
-        request.session['cart']['total']=total1
-        request.session.modified=True
-        print("total1",total1)
-        print("this cart",mycart)
-    else:
-        tax=0
-        tot=0
-    context['mycart']=cartlist
-    context['total']=total1
-    context['tax']=tax
-    context['tot']=tot
+        print(context)
+        if mycart:
+            
+            for i in mycart:
+                if i !='total':
+                    cart=Products.objects.get(proid=int(i))
+                    cartlist.append([cart.proid,cart.pronm,cart.propri,mycart[i],(cart.propri)*mycart[i]])
+                    total1=total1+(cart.propri)*mycart[i]
+                    
+                    
+            tax=total1*3/100
+            tot=tax+total1
+            request.session['cart']['total']=total1
+            request.session.modified=True
+            print("total1",total1)
+            print("this cart",mycart)
+        else:
+            tax=0
+            tot=0
+        context['mycart']=cartlist
+        context['total']=total1
+        context['tax']=tax
+        context['tot']=tot
     return render(request,'cart/cart.html',context)
     
 
@@ -321,64 +332,77 @@ def cart(request):
 #     cart=cart, product=product, quantity=quantity, **extras)
 token=1
 def confirmorder(request):
-    
-    if request.session['username']=='':
-        del request.session['username']
-        print("session:::",request.session['username'])          
-    else:
-        global authusrname
-        authusrname=request.session['username']
-    if request.method=='POST':
-        
-        print("inside post of order confirm")
-        if authusrname!='':
-            b=User.objects.get(username=authusrname)
-            print("authusrname is not blank")
-            if request.session.get('cart'):
-                cart=request.session['cart']
-                print("To see if total in cart",cart)
-                if 'total' in cart:
-                    totalt=cart['total']
-                    print("cart  have total")
-                global token
-                token+=1
-                order=Order.objects.create(
-                    user=b,
-                    order_token=authusrname[:2]+str(token),
-                    tax=(totalt*3)/100,
-                    grand_total=totalt,
-                    )
-                order.save()
-                
-                for i in cart:
-                    if not i=='total':
-                        x=OrderedItems.objects.create(
-                            order=order,
-                            item_name=Products.objects.get(proid=int(i)).pronm,
-                            itemid=int(i),
-                            item_price=Products.objects.get(proid=int(i)).propri,
-                            order_qty=cart[i],
-                            total_price=cart[i]*Products.objects.get(proid=int(i)).propri,)
-                        x.save()
+    if 'username' in request.session:
+        if request.session['username']=='':
+            del request.session['username']
+            print("session:::",request.session['username'])    
+            msg="You must login first"
+            context={'msg':msg}      
         else:
-            print("authusrname is blank")
-  
+            global authusrname
+            authusrname=request.session['username']
+            msg=""
+            context={'msg':msg}
+        if request.method=='POST':
+            
+            print("inside post of order confirm")
+            if authusrname!='':
+                b=User.objects.get(username=authusrname)
+                print("authusrname is not blank")
+                if request.session.get('cart'):
+                    cart=request.session['cart']
+                    print("To see if total in cart",cart)
+                    if 'total' in cart:
+                        totalt=cart['total']
+                        print("cart  have total")
+                    global token
+                    token+=1
+                    order=Order.objects.create(
+                        user=b,
+                        order_token=authusrname[:2]+str(token),
+                        tax=(totalt*3)/100,
+                        grand_total=totalt,
+                        )
+                    order.save()
+                    
+                    for i in cart:
+                        if not i=='total':
+                            x=OrderedItems.objects.create(
+                                order=order,
+                                item_name=Products.objects.get(proid=int(i)).pronm,
+                                itemid=int(i),
+                                item_price=Products.objects.get(proid=int(i)).propri,
+                                order_qty=cart[i],
+                                total_price=cart[i]*Products.objects.get(proid=int(i)).propri,)
+                            x.save()
+            else:
+                print("authusrname is blank")
+            
 
+        else:
+            msg=""
+            context={'msg':msg}
+            print("Not inside post")
     else:
-        print("Not inside post")
-    return render(request,'confirmorder/confirmorder.html')
+        msg="You must login"
+        context={'msg':msg}
+    return render(request,'confirmorder/confirmorder.html',context)
+    
 
 def wishlist(request):
     context={}
     msg=""
+    renderwishlist=[]
+    
     if request.method=='POST':
         print("post")
         item=request.POST.get('wishitem')
         if 'wishlist' in request.session:
             wishlist=request.session['wishlist']
-            wishlist.append(item)
-            request.session['wishlist']=wishlist
-            request.session.modified=True
+            if item not in wishlist:
+                wishlist.append(item)
+                request.session['wishlist']=wishlist
+                request.session.modified=True
             print("Now session::",request.session.get('wishlist'))
             
         else:
@@ -386,7 +410,13 @@ def wishlist(request):
             request.session['wishlist']=wishlist
             request.session.modified=True
             print("Now session::",request.session.get('wishlist'))
-        context['mywishlist']=request.session['wishlist']
+        for i in request.session['wishlist']:
+            product1=Products.objects.get(proid=int(i))
+            list1=[product1.proid,product1.pronm,product1.propri,"/home/prod/"+product1.pronm]
+            renderwishlist.append(list1)
+
+
+        context['mywishlist']=renderwishlist
     else:
         if 'wishlist' in request.session:
             mywishlist=request.session['wishlist']
@@ -397,3 +427,57 @@ def wishlist(request):
     print("session",request.session.get('wishlist'))
     print("wish::",context)
     return render(request,'wishlist/wishlist.html',context)
+
+def payment(request):
+    
+    context={}
+    if 'username' in request.session:
+        print("herererrere",request.session['username'],"heetetweweu")
+        if request.session['username']!='':
+            if request.method=="POST":
+                if request.POST.get('g-recaptcha-response')!="":
+                    formsubmitted=paymentdetails(request.POST)
+                    if formsubmitted.is_valid():
+                        
+                        usernmm=request.session['username']
+                        print("::::::::::::::::",usernmm)
+                        thatuser=Details.objects.get(usrname=usernmm)
+                        thatuser.usrfullname=formsubmitted.cleaned_data['usrfullname']
+                        thatuser.usraddress=formsubmitted.cleaned_data['usraddress']
+                        thatuser.usrphoneno=formsubmitted.cleaned_data['usrphoneno']
+                        thatuser.save()
+                        print("thatusere ::::::::::::::::",thatuser)
+                        print(formsubmitted.cleaned_data['usrfullname'])
+                        print("AAAAAAAAAAAAAAAA")
+                        msgtodisplay=""
+                    else:
+                        print("BBBBBBBBBBBBB")
+                        msgtodisplay="Form is invalid"
+                    context['captcha']=FormWithCaptcha
+                else:
+                    msgtodisplay="Please fill the reCAPTCHA"
+                    context['captcha']=FormWithCaptcha
+                    formsubmitted=paymentdetails()
+                    
+            else:
+                formsubmitted=paymentdetails()
+                context['captcha']=FormWithCaptcha
+                print("CCCCCCCCCCCCCCCCC")
+                msgtodisplay=""
+            context['form']=formsubmitted
+            signedin=1
+            context['signedin']=signedin
+        else:
+            print("DDDDDDDDDDDDDDDDDDDD")
+            msgtodisplay="You must sign in first to fill delivery details"
+            signedin=0
+            context['signedin']=signedin
+    else:
+        msgtodisplay="You must sign in first to fill delivery details"
+        print("still here")
+        signedin=0
+        context['signedin']=signedin
+    context['msg1']=msgtodisplay
+    print("captcha:::::",request.POST.get('g-recaptcha-response'),":::")
+    
+    return render(request,'payment/payment.html',context)

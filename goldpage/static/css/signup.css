@@ -1,4 +1,4 @@
-.signinpage{
+.signuppage{
     text-align: center;
     background-color: rgb(211, 202, 119);
     font-size: 2rem;
@@ -12,7 +12,7 @@
     text-align: center;
     color: black;
 }
-#signin{
+#signup{
     font-size: 2rem;
     background-color: rgb(240, 236, 204);
     font-family: 'Playfair Display', serif;

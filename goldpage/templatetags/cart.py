@@ -9,7 +9,7 @@ def cart_has_it(product,cart):
     print(product,cart)
     proidsincart=cart.keys()
     for id in proidsincart:
-        if int(id)==product.proid:
+        if id!='total' and int(id)==product.proid:
             return cart[id]
 
     return False

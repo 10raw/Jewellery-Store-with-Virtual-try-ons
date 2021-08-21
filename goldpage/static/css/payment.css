@@ -1,5 +1,5 @@
 .navbar{
-    background-color: rgb(189, 187, 94);
+    background-color: rgb(187, 170, 96);
     float: right;
   align-items: center;
   padding-top: 0.5rem;
@@ -47,30 +47,36 @@
 }
 body{
     margin-top: 0rem;
+    background-image: url(/static/images/img4.jpg);
 }
-table{
-    align-items: center;
-     margin-left: 15rem;
-}
-tr:nth-child(1){
-    background-color: rgb(187, 173, 92);
-    color: aliceblue;
-    font-size: 1.6rem;
-    align-items: center;
-    font-family: 'Playfair Display', serif;
-   
-}
-td{
-    margin-right: 2rem;
-    margin-left: 2rem;
-    padding-right: 2.5rem;
-    padding-left: 2.5rem;
-    font-size: 1.6rem;
-    font-family: 'Playfair Display', serif;
-}
-.urwishlist{
+.payment{
     font-size: 1.5rem;
     margin-left: 43rem;
     margin-top: 0.7rem;
     font-family: 'Playfair Display', serif;
+    
+}
+.payment2{
+    font-size: 1.5rem;
+    /* margin-left: 41rem; */
+    margin-top: 0.7rem;
+    font-family: 'Playfair Display', serif;
+    background-color: rgb(228, 220, 174);
+    text-align: center;
+}
+.but{
+    font-size: 1.5rem;
+    margin-left: 40rem;
+    margin-top: 0.7rem;
+    font-family: 'Playfair Display', serif;
+    background-color: rgb(184, 176, 109);
+    
+}
+.details{
+    align-content: center;
+    justify-content: center;
+    display:flexbox;
+    align-items: center;
+    text-align: center;
+    background-color: rgb(228, 220, 174);
 }

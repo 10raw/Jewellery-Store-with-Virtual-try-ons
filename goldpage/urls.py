@@ -11,5 +11,6 @@ urlpatterns=[
     path('logout/',views.logout,name="logout"),
     path('cart/',views.cart,name='cart'),
     path('confirmorder/',views.confirmorder,name="confirmorder"),
-    path('wishlist/',views.wishlist,name="wishlist")
+    path('wishlist/',views.wishlist,name="wishlist"),
+    path('payment/',views.payment,name="payment"),
 ]

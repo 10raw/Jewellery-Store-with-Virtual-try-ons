@@ -18,11 +18,11 @@
 <body>
     <div class="navbar">
 
-        <img src="./images/evara.jpg" height="60px" width="110px" alt="">
+        <img src="{% static 'images/OIP.jfif' %}" height="60px" width="110px" alt="">
         <a href="home.html">Home<img src="" alt=""></a>  
         <div class="floatr">                                                                                                            
 <a href="/home/cart/">My Cart    <img src="{% static 'images/cartjes.png' %}" height="30px" width="30px" alt=""></a>
-<a href="wishlist.html">Wishlist    <img src="{% static 'images/wishlist.png' %}" height="30px" width="30px" alt=""></a>
+<a href="/home/wishlist/">Wishlist    <img src="{% static 'images/wishlist.png' %}" height="30px" width="30px" alt=""></a>
 {% if usrnnmm %}
 
 <a href="/home/logout">Log Out  <img src="{% static 'images/user (2).png' %}" height="30px" width="30px" alt=""></a>

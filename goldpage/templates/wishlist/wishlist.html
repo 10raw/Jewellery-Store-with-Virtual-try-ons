@@ -7,6 +7,35 @@
 {% endblock %}
 
 {% block main %}
-{{mywishlist}}
-{{msg}}
+<p class="msg1">{{msg}}</p>
+<p class="urwishlist">Your Wishlist</p>
+<table cellspacing="15">
+    <tr>
+        <td>Item Id</td>
+        <td>Item</td>
+        <td>Price (Rs)</td>
+        <td>Navigating Link</td>
+    </tr>
+   
+{% for wishes in mywishlist %}
+
+<tr>
+    
+{% for dets in wishes %}
+
+{% ifequal forloop.counter 4 %}
+<td>
+    <a href="http://127.0.0.1:8000{{dets}}/">Go to the Item</a>
+</td>
+{% else %}
+<td>{{dets}}</td>
+{% endifequal %}
+{% endfor %}
+
+
+</tr>
+
+{% endfor %}
+
+</table>
 {% endblock %}

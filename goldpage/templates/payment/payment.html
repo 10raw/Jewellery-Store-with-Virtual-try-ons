@@ -1,0 +1,24 @@
+{% extends 'temp/navbar.html' %} 
+<!-- {% include 'temp/navbar.html' %} -->
+{% load static %}
+
+{% block linkthings %}
+<link rel="stylesheet" href="{% static 'css/paymentdets.css' %}">
+{% endblock %}
+
+{% block main %}
+{{msg1}}
+<marquee class="payment">Fill your delivery details correctly. Note that the details are mandatory.</marquee>
+{% ifequal signedin 1 %}
+<form class="form" action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    {{captcha}}
+    <br>
+   <button class="but" type="submit"> Submit</button>
+    
+</form>
+
+{% endifequal %}
+
+{% endblock %}

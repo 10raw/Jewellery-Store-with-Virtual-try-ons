@@ -6,17 +6,26 @@
 <link rel="stylesheet" href="{% static 'css/sepprodstyle.css' %}">
 {% endblock linkthings %}
 {% block main %}
+<br><br><br><br><br>
+<div class="container2">
+<div class="container">
 {% for pro1 in product %}
+
 <img src="{{pro1.proi.url}}" width="570px" height="500px" alt="">
+</div>
+<div class="contain">
 <p>{{pro1.pronm}}</p>
 <p>Price: Rs <b>{{pro1.propri}}</b></p>
 <p>Weight/Amount: <b>{{pro1.proamt}}</b></p>
 <p>{{pro1.prodesc}}</p>
+
 <form action="" method="post">
     {% csrf_token %}
     <!-- lol this csrf is want to set for first time requires internet -->
     <input name="product" type="text" hidden value="{{pro1.proid}}">
     <p>Product ID:{{pro1.proid}}</p>
+    <br>
+    <div class="buttons2">
     <button class="addtocart" type="submit">Add To Cart</button>
     
     
@@ -25,50 +34,57 @@
 <form action="/home/wishlist/" method="post">
     {% csrf_token %}
     <input type="text" name="wishitem" hidden value="{{pro1.proid}}">
-    <input type="submit" value="Add To Wishlist">
+    <input class="addtowish" type="submit" value="Add To Wishlist">
 </form>
-
+</div>
+<br>
+<div class="flex">
 {% if pro1|cart_has_it:request.session.cart %}
 <form action="" method="post">
     {% csrf_token %}
     <input type="text" hidden name="addincart" value="{{pro1.proid}}">
-    <input type="submit" name="" value="+" id=""> 
+    <input class="but1" type="submit" name="" value="+" id=""> 
 </form>
-<p>{{pro1 | cart_has_it:request.session.cart}} in Cart </p>
+<p class="textinbet">{{pro1 | cart_has_it:request.session.cart}} in Cart </p>
 <form action="" method="post">
     {% csrf_token %}
     <input type="text" hidden name="subfromcart" value="{{pro1.proid}}">
-    <input type="submit" name="" value="-" id="">
+    <input class="but2" type="submit" name="" value="-" id="">
 </form>
 {% endif %}
-
+</div>
 {% endfor %}
-<h1>Virtual Try-on this item: </h1>
+</div>
+
+</div>
+<div class="vt">
+<p style="font-family:  'Playfair Display', serif; font-size: 2rem; text-decoration: double;">Virtual Try-on this item: </p>
 {% ifequal usrnnmm False %}
 
-<p> Hello User </p>
+<p style="font-size: 2rem;"> Hello User </p>
+<!-- <a style="font-size: 2rem;" href="/home/signinup">Sign in/up here</a> -->
 {%endifequal%}
 
 {% if usrnnmm %}
-    <form method="POST" action="" enctype="multipart/form-data">
+    <form class="imgform" method="POST" action="" enctype="multipart/form-data">
         <!-- {{csrf_token}} this will actually print it-->
         {% csrf_token %}
     {{form.usrph}}
-    <input type="submit" value="Upload">
+    <input class="button" type="submit" value="Upload">
 </form>
-<a href="/home/signinup">Sign in/up here</a>
-<div class="vto"></div>
+
+
 {% for pro1 in product %}
-{% include 'temp/overlay.html' with iback=usrfin.url  ifront=pro1.proi.url %}
+{% include 'temp/overlay.html' with iback=usrfin.url  ifront=pro1.proierased.url %}
 {% endfor %}
 
 
 
 </div>
 {% else %}
-<p>Please Sign in/up First <a  href="http://127.0.0.1:8000/home/signin/">here.</a></p>
+<p style="font-size: 2rem;">Please Sign in/up First <a  href="http://127.0.0.1:8000/home/signin/">here.</a></p>
 {% endif %}
-</body>
+</div>
 <style>
 
 </style>

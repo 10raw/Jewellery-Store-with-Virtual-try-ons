@@ -1,1 +1,9 @@
 media/
+*.jpg
+*.png
+*.jpeg
+*.pptx
+*.jfif
+*.mp4
+website1/settings.py
+images/

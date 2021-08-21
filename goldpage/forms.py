@@ -18,4 +18,9 @@ class detailsform(forms.ModelForm):
     class Meta:
         model=Details
         fields=['usrph']
+class paymentdetails(forms.ModelForm):
+    class Meta:
+        model=Details
+        fields=['usrfullname','usraddress','usrphoneno']
+
 

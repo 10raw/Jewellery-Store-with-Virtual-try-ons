@@ -1,5 +1,5 @@
 .prodetails{
-    padding-top: 3rem;
+    /* padding-top: 3rem; */
     padding-left: 1rem;
     padding-right: 1rem;
 }
@@ -8,7 +8,7 @@
 
 
 .navbar{
-    background-color: rgb(161, 212, 212);
+    background-color: rgb(189, 182, 87);
     float: right;
   align-items: center;
   padding-top: 0.5rem;
@@ -48,3 +48,81 @@
   .floatr>a:link{
       padding-left: 2rem;
   }
+
+ tr:nth-child(1){
+     background-color: rgb(187, 173, 92);
+     color: aliceblue;
+     font-size: 1.6rem;
+     align-items: center;
+     font-family: 'Playfair Display', serif;
+    
+ }
+ td{
+     margin-right: 2rem;
+     margin-left: 2rem;
+     padding-right: 2.5rem;
+     padding-left: 2.5rem;
+     font-size: 1.6rem;
+     font-family: 'Playfair Display', serif;
+ }
+ table{
+     align-items: center;
+     margin-left: 10rem;
+ }
+ .flex{
+     display:flex;
+
+ }
+ .flex>div{
+     margin-right: 10rem;
+     margin-left: 14rem;
+ }
+ .flex>div>p{
+    font-size: 1.6rem;
+    font-family: 'Playfair Display', serif;
+ }
+ .gtot{
+     
+     background-color:rgb(196, 182, 102);
+     color: rgb(255, 255, 255);
+     padding-left: 1.1rem;
+     padding-right: 1.1rem;
+     padding-top: 0.2rem;
+     padding-bottom: 0.5rem;
+     border: 0.1rem solid;
+     border-color: rgb(0, 0, 0);
+     
+ }
+ .carttable{
+     /* margin-top: 3rem; */
+     margin-left: 14rem;
+     background-color: rgb(226, 221, 180);
+ }
+ .urcart{
+     font-size: 1.5rem;
+     margin-left: 43rem;
+     margin-top: 0.7rem;
+     font-family: 'Playfair Display', serif;
+ }
+ .urcart2{
+     font-size: 1.5rem;
+     margin-left: 37rem;
+     margin-top: 0.7rem;
+     font-family: 'Playfair Display', serif;
+ }
+ .previoustable{
+     margin-left: 16rem;
+ }
+ .confirmbut{
+    background-color:rgb(189, 173, 85);
+    color: rgb(255, 255, 255);
+    padding-left: 1.1rem;
+    padding-right: 1.1rem;
+    padding-top: 0.2rem;
+    padding-bottom: 0.5rem;
+    border: 0.2rem solid;
+    border-color: rgb(0, 0, 0);
+    font-size: 1.6rem;
+     font-family: 'Playfair Display', serif;
+     margin-left: 40rem;
+ }

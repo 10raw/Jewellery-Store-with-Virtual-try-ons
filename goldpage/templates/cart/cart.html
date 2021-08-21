@@ -7,28 +7,59 @@
 {% endblock %}
 
 {% block main %}
+{{msglogin}}
+<p class="urcart">Your Cart</p>
 
-<div  class="prodetails" style="white-space: pre;">
-{% for i in mycart %}
+<div  class="prodetails" >
+<table class="carttable" cellspacing="15"  >
+    <tr>
+        <td>Item ID</td>
+        <td>Item</td>
+        <td>Price (Rs)</td>
+        <td>Quantity</td>
+        <td>Total</td>
+    </tr>
+    {% for i in mycart %}
+    <tr>
+        {% for j in i %}  
+        <td>
+            {{j}}
+        </td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+         
 
-{% for j in i %}      {{j}}      {% endfor %}
 
-{% endfor %}
-{{total}}
+</table>
+<hr>
+<div class="flex">
+<div>
+<p>Total Price : Rs. {{total}} </p>
 <p>plus 3% service tax = {{tax}}</p>
+</div>
+<div>
 <p>Grand Total:</p>
-{{tot}}
-
+<p class="gtot">Rs. {{tot}}</p>
+</div>
+</div>
 </div>
 <form action="/home/confirmorder/" method="post">
     {% csrf_token %}
-<input type="submit" value="Confirm & Place">
+<input class="confirmbut" type="submit" value="Confirm & Place">
 </form>
 
-<p>Your previous Placed Orders:</p>
+<p class="urcart2">Your previous Placed Orders:</p>
+<table class="previoustable" cellspacing="15">
 {% for pr in prev %}
-<p style="white-space: pre;">
-{% for p in pr %}       {{p}}       {% endfor %}
-</p>
+
+<tr>
+{% for p in pr %} 
+<td>     
+{{p}}
+</td>      
 {% endfor %}
+</tr>
+{% endfor %}
+</table>
 {% endblock %}
